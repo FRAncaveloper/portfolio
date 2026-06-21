@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'experience_screen.dart';
 
 class ResumeScreen extends StatelessWidget {
   const ResumeScreen({super.key});
@@ -35,12 +36,45 @@ class ResumeScreen extends StatelessWidget {
               content:
                   'Tecnologia da Informação\nUniversidade Federal do Rio Grande do Norte (UFRN)\nGraduação em andamento: 2024 - 2027',
             ),
+            
+            const SizedBox(height: 48),
+            // Botão para navegar para a tela de experiência profissional
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.greenAccent,
+                  foregroundColor: Colors.black,
+                  shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 32,
+                    vertical: 16,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ExperienceScreen(),
+                    ),
+                  );
+                },
+                child: const Text(
+                  'NEXT LEVEL',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-
+  // Widget para criar uma caixa com estilo retrô
   Widget _buildRetroBox({required String title, required String content}) {
     return Container(
       width: double.infinity,
@@ -55,7 +89,8 @@ class ResumeScreen extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: Column( 
+        
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -75,6 +110,7 @@ class ResumeScreen extends StatelessWidget {
             ),
           ),
         ],
+        
       ),
     );
   }
