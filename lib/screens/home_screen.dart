@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'resume_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -39,8 +40,15 @@ class HomeScreen extends StatelessWidget {
                   vertical: 16,
                 ),
               ),
-              //botão para iniciar o currículo, por enquanto sem funcionalidade
-              onPressed: () {},
+              //botão para iniciar o currículo, agora navegando para a próxima tela
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ResumeScreen(),
+                  ),
+                );
+              },
               child: const Text(
                 'PRESS START',
                 style: TextStyle(
