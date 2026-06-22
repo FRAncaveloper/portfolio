@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'projects_screen.dart';
 
-class ExperienceScreen extends StatelessWidget {
-  const ExperienceScreen({super.key});
- // Tela de experiência profissional
+class SkillsScreen extends StatelessWidget {
+  const SkillsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // Configurações do AppBar para a tela de habilidades
         backgroundColor: Colors.black,
         iconTheme: const IconThemeData(color: Colors.greenAccent),
         title: const Text(
-          'EXPERIÊNCIA',
+          'STATUS FINAL',
           style: TextStyle(
             color: Colors.greenAccent,
             fontSize: 32,
@@ -20,38 +20,45 @@ class ExperienceScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      // Corpo da tela de experiência profissional
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: Column( 
+          // Configurações do corpo da tela de habilidades
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildRetroBox(
-              title: 'CASA CLARIBELA',
-              subtitle: 'Estagiário em Gestão de Eventos',
-              period: 'mai/2024 - jul/2025',
+              title: 'PORTFÓLIO E LINKS',
               topics: [
-                'Apoio na criação e organização de conteúdos digitais e materiais visuais.',
-                'Desenvolvimento de habilidades de comunicação, organização e trabalho em equipe.',
-                'Participação em planejamento de campanhas e acompanhamento de processos.',
-                'Contato direto com clientes e resolução de demandas operacionais.'
+                'Adobe Portfolio: pedrog3a.myportfolio.com',
+                'GitHub: github.com/FRAncaveloper',
+                'LinkedIn: (Incluso no cabeçalho original)'
               ],
             ),
             const SizedBox(height: 24),
             _buildRetroBox(
-              title: 'TELEPERFORMANCE',
-              subtitle: 'Expert em Interação (SAC)',
-              period: 'ago/2023 - nov/2024',
+              title: 'INVENTÁRIO (SKILLS)',
               topics: [
-                'Atendimento ao cliente em ambiente de alta demanda.',
-                'Desenvolvimento de habilidades de resolução de problemas e comunicação.',
-                'Experiência com processos, organização de informações e suporte ao usuário.',
-                'Forte foco em experiência do cliente e entendimento de necessidades dos usuários.'
+                'Linguagens: Dart, Python, Java, HTML, CSS',
+                'Frameworks: Flutter',
+                'Mobile: Android, Widgets, Navegação',
+                'Ferramentas: Git, VS Code, Figma, Photoshop',
+                'Design: UI/UX, Wireframes, Design Responsivo',
+                'Banco de Dados: SQL, Relacional',
+                'Idiomas: Inglês Intermediário',
+              ],
+            ),
+            const SizedBox(height: 24),
+            _buildRetroBox(
+              title: 'ATRIBUTOS BASE',
+              topics: [
+                'Comunicação e Trabalho em Equipe',
+                'Organização e Resolução de Problemas',
+                'Proatividade e Aprendizado Contínuo',
               ],
             ),
             const SizedBox(height: 48),
-            Center(
-                // Botão para navegar para a tela de projetos
+            Center( 
+                // Botão para reiniciar o currículo, voltando para a tela inicial
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.greenAccent,
@@ -65,15 +72,10 @@ class ExperienceScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ProjectsScreen(),
-                    ),
-                  );
+                  Navigator.popUntil(context, (route) => route.isFirst);
                 },
                 child: const Text(
-                  'NEXT LEVEL',
+                  'GAME CLEAR (RESTART)',
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
@@ -86,15 +88,12 @@ class ExperienceScreen extends StatelessWidget {
       ),
     );
   }
- // Widget para criar uma caixa com estilo retrô
+
   Widget _buildRetroBox({
     required String title,
-    required String subtitle,
-    required String period,
     required List<String> topics,
   }) {
     return Container(
-        // Estilo retrô para a caixa de experiência
       width: double.infinity,
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -108,7 +107,6 @@ class ExperienceScreen extends StatelessWidget {
         ],
       ),
       child: Column(
-        // Conteúdo da caixa de experiência
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -120,21 +118,6 @@ class ExperienceScreen extends StatelessWidget {
               decorationColor: Colors.greenAccent,
             ),
           ),
-          const SizedBox(height: 8),
-          Text(
-            subtitle,
-            style: const TextStyle(
-              fontSize: 24,
-              fontStyle: FontStyle.italic,
-            ),
-          ),
-          Text(
-            period,
-            style: const TextStyle(
-              fontSize: 20,
-              color: Colors.grey,
-            ),
-          ),
           const SizedBox(height: 16),
           ...topics.map((topic) => Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
@@ -142,7 +125,7 @@ class ExperienceScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      '> ',
+                      '+ ',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
